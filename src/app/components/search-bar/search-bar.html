@@ -1,0 +1,10 @@
+<div class="search-container">
+    <div class="search">
+        <input type="text" placeholder="search..." #search 
+        (input)="updateMovieList(search.value)">
+        <button>
+            <fa-icon [icon]="faMagnifyingGlass" />
+        </button>
+    </div>
+    
+</div>

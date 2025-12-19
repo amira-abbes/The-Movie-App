@@ -1,0 +1,213 @@
+/* =======================================
+   HEAD BAR - NETFLIX/CASA DE PAPEL THEME
+   ======================================= */
+
+.head-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-2xl);
+
+    /* Pure black background */
+    background: rgba(0, 0, 0, 0.98);
+
+    /* Glass morphism effect */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    /* Red bottom border */
+    border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+
+    /* Subtle shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+
+    /* Smooth transitions */
+    transition: all var(--transition-base);
+
+    /* Fade in animation on load */
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Logo / Title Styling */
+h1 {
+    font-family: var(--font-family-heading);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0;
+
+    /* Premium gradient text effect */
+    background: linear-gradient(135deg,
+            #ffffff 0%,
+            #e50914 50%,
+            #ff1744 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Animated gradient */
+    animation: gradientShift 3s ease infinite;
+
+    /* Glow effect */
+    filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.3));
+
+    /* Smooth transitions */
+    transition: all var(--transition-base);
+    cursor: pointer;
+    user-select: none;
+}
+
+h1:hover {
+    filter: drop-shadow(0 0 20px rgba(229, 9, 20, 0.6));
+    transform: scale(1.02);
+}
+
+/* Wishlist Button Container */
+button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+
+    /* Sizing */
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-lg);
+
+    /* Glass morphism styling */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-full);
+
+    /* Typography */
+    color: var(--color-text-primary);
+    font-family: var(--font-family-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    /* Effects */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Smooth transitions */
+    transition: all var(--transition-base);
+
+    /* Remove default button styles */
+    outline: none;
+}
+
+button:hover {
+    background: rgba(229, 9, 20, 0.15);
+    border-color: rgba(229, 9, 20, 0.4);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+        0 8px 24px rgba(229, 9, 20, 0.3),
+        0 0 20px rgba(229, 9, 20, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow:
+        0 2px 8px rgba(229, 9, 20, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Heart Icon Styling */
+fa-icon {
+    position: relative;
+    font-size: 1.2rem;
+    transition: all var(--transition-bounce);
+    z-index: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+button:hover fa-icon {
+    transform: scale(1.2);
+    filter: drop-shadow(0 4px 8px rgba(229, 9, 20, 0.6));
+}
+
+/* Animated glow when wishlist has items */
+button fa-icon[style*="color: red"],
+button fa-icon[style*="color:red"] {
+    animation: pulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
+}
+
+/* Wishlist Count Badge */
+button::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent-gradient);
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-primary);
+    opacity: 0;
+    transform: scale(0);
+    transition: all var(--transition-bounce);
+}
+
+/* Show badge when wishlist has items */
+button:has(fa-icon[style*="color: red"])::after,
+button:has(fa-icon[style*="color:red"])::after {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .head-container {
+        padding: var(--spacing-md) var(--spacing-xl);
+    }
+
+    h1 {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    button {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .head-container {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: 0.85rem;
+        gap: var(--spacing-xs);
+    }
+
+    fa-icon {
+        font-size: 1rem;
+    }
+}

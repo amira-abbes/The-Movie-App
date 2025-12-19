@@ -1,0 +1,60 @@
+<nav class="category-navbar">
+    <!-- Left Scroll Arrow -->
+    <button class="scroll-arrow left-arrow" (click)="scrollLeft()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+
+    <!-- Category Pills Container -->
+    <div class="category-pills" #categoryContainer>
+        <button class="category-pill" [class.active]="selectedCategory === 'all'" (click)="selectCategory('all')">
+            ALL MOVIES
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'action'" (click)="selectCategory('action')">
+            ACTION
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'adventure'"
+            (click)="selectCategory('adventure')">
+            ADVENTURE
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'comedy'" (click)="selectCategory('comedy')">
+            COMEDY
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'crime'" (click)="selectCategory('crime')">
+            CRIME
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'documentaries'"
+            (click)="selectCategory('documentaries')">
+            DOCUMENTARIES
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'drama'" (click)="selectCategory('drama')">
+            DRAMA
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'fantasy'"
+            (click)="selectCategory('fantasy')">
+            FANTASY
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'horror'" (click)="selectCategory('horror')">
+            HORROR
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'romance'"
+            (click)="selectCategory('romance')">
+            ROMANCE
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'sci-fi'" (click)="selectCategory('sci-fi')">
+            SCI-FI
+        </button>
+        <button class="category-pill" [class.active]="selectedCategory === 'thriller'"
+            (click)="selectCategory('thriller')">
+            THRILLER
+        </button>
+    </div>
+
+    <!-- Right Scroll Arrow -->
+    <button class="scroll-arrow right-arrow" (click)="scrollRight()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+</nav>

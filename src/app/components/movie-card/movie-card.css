@@ -1,0 +1,280 @@
+/* =======================================
+   MOVIE DETAIL CARD - NETFLIX/CASA DE PAPEL MODAL STYLE
+   ======================================= */
+
+.movie-container {
+    position: relative;
+    display: flex;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-3xl);
+    min-height: 70vh;
+
+    /* Pure black background */
+    background: #000000;
+
+    /* Typography base */
+    font-family: var(--font-family-primary);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+
+    /* Fade in animation */
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Movie Poster Container */
+.movie-container>div:first-child {
+    flex-shrink: 0;
+    animation: slideUp 0.6s ease-out 0.2s both;
+}
+
+/* Movie Poster Image */
+img {
+    width: 350px;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+
+    /* Glass morphism border effect */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+
+    /* Enhanced shadow */
+    box-shadow:
+        0 16px 64px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(229, 9, 20, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.05);
+
+    /* Smooth transitions */
+    transition: all var(--transition-slow);
+}
+
+img:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow:
+        0 20px 72px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(229, 9, 20, 0.3),
+        inset 0 2px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Details Content Container */
+.details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+
+    /* Glass morphism card */
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+
+    /* Padding */
+    padding: var(--spacing-2xl);
+
+    /* Shadow */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    /* Slide animation */
+    animation: slideUp 0.6s ease-out 0.4s both;
+}
+
+/* Movie Title */
+h1 {
+    font-family: var(--font-family-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md) 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+
+    /* Gradient text effect */
+    background: linear-gradient(135deg,
+            #ffffff 0%,
+            #f0f0f0 50%,
+            #e50914 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    /* Glow effect */
+    filter: drop-shadow(0 4px 12px rgba(229, 9, 20, 0.2));
+}
+
+/* Add to Wishlist Button */
+button {
+    align-self: flex-start;
+    padding: var(--spacing-md) var(--spacing-2xl);
+
+    /* Netflix red styling */
+    background: var(--color-accent-gradient);
+    border: none;
+    border-radius: var(--radius-md);
+
+    /* Typography */
+    color: var(--color-text-primary);
+    font-family: var(--font-family-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    /* Shadow and glow */
+    box-shadow:
+        0 8px 24px rgba(229, 9, 20, 0.4),
+        0 0 20px rgba(229, 9, 20, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Smooth transitions */
+    transition: all var(--transition-base);
+
+    /* Remove default button styles */
+    outline: none;
+
+    /* Pulsing animation */
+    animation: glow 2s ease-in-out infinite;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff1744 0%, #e50914 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 12px 32px rgba(229, 9, 20, 0.5),
+        0 0 40px rgba(229, 9, 20, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow:
+        0 4px 16px rgba(229, 9, 20, 0.3),
+        0 0 20px rgba(229, 9, 20, 0.2);
+}
+
+/* Disabled Button State */
+button:disabled {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+    box-shadow: none;
+    animation: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+button:disabled:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Movie Information Paragraphs */
+p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* Information Labels */
+span {
+    display: inline-block;
+    min-width: 180px;
+    color: var(--color-accent-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-right: var(--spacing-sm);
+}
+
+/* Overview Section */
+p:last-child {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--color-text-primary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+p:last-child span {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .movie-container {
+        flex-direction: column;
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        gap: var(--spacing-xl);
+    }
+
+    img {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .details {
+        padding: var(--spacing-xl);
+    }
+
+    h1 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+    }
+
+    span {
+        min-width: 150px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .movie-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-lg);
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: var(--radius-lg);
+    }
+
+    .details {
+        padding: var(--spacing-lg);
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    button {
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: 0.95rem;
+    }
+
+    span {
+        display: block;
+        min-width: auto;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+}

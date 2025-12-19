@@ -1,0 +1,20 @@
+/* =======================================
+   APP COMPONENT - MAIN CONTAINER
+   ======================================= */
+
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
+/* Smooth Page Transitions */
+router-outlet~* {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Main Content Area */
+app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

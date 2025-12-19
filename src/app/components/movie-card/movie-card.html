@@ -1,0 +1,20 @@
+@if(movie){
+    <div class="movie-container">
+        <div>
+            <img [src]="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`">
+        </div>
+        <div class="details">
+            <h1>
+                {{movie.title}}
+            </h1>
+            <button (click)="addToWishList(movie)"
+            [disabled]="buttonDisabled">Add to my wishlist</button>
+            <p>
+                <span>Original title</span>{{movie.original_title}}<br />
+                <span>Original language</span>{{movie.original_language}}<br />
+                <span>Release date</span>{{movie.release_date|date:'fullDate'}}<br />
+            </p>
+            <p><span>Overview</span><br />{{movie.overview}}</p>
+        </div>
+    </div>
+}

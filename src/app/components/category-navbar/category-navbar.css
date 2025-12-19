@@ -1,0 +1,849 @@
+/* =======================================
+   CATEGORY NAVBAR - ULTRA PREMIUM NETFLIX THEME
+   Advanced Animations, Neon Glow, 3D Effects
+   ======================================= */
+
+.category-navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-2xl);
+
+    /* Pure black gradient with subtle texture */
+    background:
+        linear-gradient(180deg, #000000 0%, #0a0a0a 100%),
+        radial-gradient(circle at 20% 50%, rgba(229, 9, 20, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(229, 9, 20, 0.03) 0%, transparent 50%);
+    background-blend-mode: normal;
+
+    /* Red bottom border with glow */
+    border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.8),
+        0 1px 0 rgba(229, 9, 20, 0.1) inset;
+
+    /* Z-index */
+    z-index: 100;
+
+    /* Entrance animation */
+    animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Enhanced slide down with bounce */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Arrows - 3D Effect */
+.scroll-arrow {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Layered background for depth */
+    background:
+        radial-gradient(circle at 30% 30%, rgba(229, 9, 20, 0.1) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(20, 20, 20, 1) 0%, rgba(0, 0, 0, 1) 100%);
+
+    border: 2px solid rgba(229, 9, 20, 0.3);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+
+    /* 3D transform */
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    z-index: 10;
+    position: relative;
+    overflow: visible;
+}
+
+/* Animated border glow */
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(229, 9, 20, 0.6) 25%,
+            transparent 50%,
+            rgba(229, 9, 20, 0.6) 75%,
+            transparent 100%);
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    animation: rotateBorder 3s linear infinite;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes rotateBorder {
+    0% {
+        background-position: 0% 0%;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        background-position: 200% 200%;
+        transform: rotate(360deg);
+    }
+}
+
+.scroll-arrow:hover::after {
+    opacity: 1;
+}
+
+/* Arrow inner glow */
+.scroll-arrow::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(229, 9, 20, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s ease;
+}
+
+.scroll-arrow:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scroll-arrow:hover {
+    background:
+        radial-gradient(circle at 30% 30%, rgba(229, 9, 20, 0.3) 0%, transparent 70%),
+        linear-gradient(135deg, rgba(229, 9, 20, 0.2) 0%, rgba(0, 0, 0, 1) 100%);
+    border-color: #E50914;
+    transform: scale(1.15) translateZ(10px);
+    box-shadow:
+        0 0 30px rgba(229, 9, 20, 0.6),
+        0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-arrow:active {
+    transform: scale(1.05) translateZ(5px);
+}
+
+.scroll-arrow svg {
+    stroke-width: 2.5;
+    filter: drop-shadow(0 2px 6px rgba(229, 9, 20, 0.5));
+    transition: all 0.3s ease;
+}
+
+.scroll-arrow:hover svg {
+    stroke: #E50914;
+    filter: drop-shadow(0 0 10px rgba(229, 9, 20, 0.8));
+    transform: translateX(0) scale(1.1);
+}
+
+.left-arrow:hover svg {
+    transform: translateX(-3px) scale(1.1);
+}
+
+.right-arrow:hover svg {
+    transform: translateX(3px) scale(1.1);
+}
+
+/* Category Pills Container */
+.category-pills {
+    flex: 1;
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--spacing-xs) 0;
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+/* Category Pill Buttons - Ultra Premium */
+.category-pill {
+    flex-shrink: 0;
+    position: relative;
+    padding: 0.9rem 2.4rem;
+
+    /* Layered gradient background */
+    background:
+        linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
+
+    color: #b3b3b3;
+    font-family: var(--font-family-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    /* Double border effect */
+    border: 2px solid transparent;
+    border-radius: var(--radius-full);
+
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+
+    /* 3D transform */
+    transform-style: preserve-3d;
+
+    /* Smooth transitions */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Layered shadows */
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Shimmer effect */
+.category-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(229, 9, 20, 0.2) 50%,
+            transparent 100%);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-pill:hover::before {
+    left: 150%;
+}
+
+/* Particle/glow effect */
+.category-pill::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius-full);
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(229, 9, 20, 0.3),
+            transparent);
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.4s ease;
+}
+
+.category-pill:hover::after {
+    opacity: 0.6;
+}
+
+/* Hover State - Cinematic */
+.category-pill:hover {
+    background:
+        linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(15, 15, 15, 1) 100%);
+    color: #ffffff;
+    border-color: rgba(229, 9, 20, 0.5);
+
+    /* 3D lift */
+    transform: translateY(-4px) translateZ(10px) scale(1.02);
+
+    /* Enhanced shadows */
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(229, 9, 20, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    /* Text shadow */
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+/* Active State - Ultra Premium */
+.category-pill.active {
+    background:
+        linear-gradient(135deg, #E50914 0%, #ff1f29 50%, #E50914 100%);
+    background-size: 200% 200%;
+    color: #ffffff;
+    border-color: #E50914;
+
+    transform: translateY(-3px) translateZ(15px);
+
+    /* Multi-layer glow */
+    box-shadow:
+        0 8px 24px rgba(229, 9, 20, 0.7),
+        0 0 40px rgba(229, 9, 20, 0.5),
+        0 0 60px rgba(229, 9, 20, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+
+    /* Text glow */
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(229, 9, 20, 0.8);
+
+    /* Animated gradient + pulsing glow */
+    animation:
+        gradientShift 4s ease infinite,
+        pulseGlow 2s ease-in-out infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Enhanced pulsing glow */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 8px 24px rgba(229, 9, 20, 0.7),
+            0 0 40px rgba(229, 9, 20, 0.5),
+            0 0 60px rgba(229, 9, 20, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 10px 30px rgba(229, 9, 20, 0.9),
+            0 0 50px rgba(229, 9, 20, 0.7),
+            0 0 80px rgba(229, 9, 20, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+.category-pill:active {
+    transform: translateY(-1px) translateZ(5px);
+}
+
+/* Entrance animation - Enhanced */
+.category-pill {
+    animation: fadeInUpBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes fadeInUpBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    60% {
+        transform: translateY(-5px) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Stagger animation delays - Extended */
+.category-pill:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.category-pill:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.category-pill:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.category-pill:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.category-pill:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.category-pill:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.category-pill:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.category-pill:nth-child(8) {
+    animation-delay: 0.45s;
+}
+
+.category-pill:nth-child(9) {
+    animation-delay: 0.5s;
+}
+
+.category-pill:nth-child(10) {
+    animation-delay: 0.55s;
+}
+
+.category-pill:nth-child(11) {
+    animation-delay: 0.6s;
+}
+
+.category-pill:nth-child(12) {
+    animation-delay: 0.65s;
+}
+
+/* Scan line effect on navbar */
+.category-navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(229, 9, 20, 0.8),
+            transparent);
+    animation: scan 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+
+    0%,
+    100% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+    }
+
+    50% {
+        left: 100%;
+    }
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+
+@media (max-width: 1024px) {
+    .category-navbar {
+        padding: var(--spacing-lg) var(--spacing-xl);
+        gap: var(--spacing-md);
+    }
+
+    .scroll-arrow {
+        width: 46px;
+        height: 46px;
+    }
+
+    .category-pill {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .category-navbar {
+        padding: var(--spacing-md) var(--spacing-lg);
+        gap: var(--spacing-sm);
+    }
+
+    .scroll-arrow {
+        width: 42px;
+        height: 42px;
+    }
+
+    .scroll-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .category-pills {
+        gap: var(--spacing-sm);
+    }
+
+    .category-pill {
+        padding: 0.7rem 1.6rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+    }
+
+    /* Reduce heavy animations on mobile */
+    .category-pill {
+        animation: fadeIn 0.5s ease-out both;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .category-pill.active {
+        animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    /* Disable scan line on mobile */
+    .category-navbar::before {
+        display: none;
+    }
+}
+
+.category-navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-2xl);
+
+    /* Pure black gradient background */
+    background: linear-gradient(180deg,
+            #000000 0%,
+            #0a0a0a 100%);
+
+    /* Red bottom border */
+    border-bottom: 2px solid rgba(229, 9, 20, 0.3);
+
+    /* Shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+
+    /* Z-index */
+    z-index: 100;
+
+    /* Entrance animation */
+    animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Arrows */
+.scroll-arrow {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(229, 9, 20, 0.3);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Arrow glow effect on hover */
+.scroll-arrow::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(229, 9, 20, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.scroll-arrow:hover::before {
+    opacity: 1;
+}
+
+.scroll-arrow:hover {
+    background: rgba(229, 9, 20, 0.15);
+    border-color: #E50914;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+}
+
+.scroll-arrow:active {
+    transform: scale(0.95);
+}
+
+.scroll-arrow svg {
+    stroke-width: 2.5;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    transition: all var(--transition-base);
+}
+
+.scroll-arrow:hover svg {
+    stroke: #E50914;
+}
+
+/* Category Pills Container */
+.category-pills {
+    flex: 1;
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--spacing-xs) 0;
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.category-pills::-webkit-scrollbar {
+    display: none;
+}
+
+/* Category Pill Buttons */
+.category-pill {
+    flex-shrink: 0;
+    position: relative;
+    padding: 0.85rem 2.2rem;
+    background: #141414;
+    color: #b3b3b3;
+    font-family: var(--font-family-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 2px solid transparent;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+
+    /* Smooth transitions */
+    transition: all var(--transition-base);
+
+    /* Shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Animated gradient background */
+.category-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(229, 9, 20, 0.1),
+            transparent);
+    transition: left 0.5s ease;
+}
+
+.category-pill:hover::before {
+    left: 100%;
+}
+
+/* Hover State */
+.category-pill:hover {
+    background: #1f1f1f;
+    color: #ffffff;
+    border-color: rgba(229, 9, 20, 0.4);
+    transform: translateY(-3px);
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(229, 9, 20, 0.2);
+}
+
+/* Active State */
+.category-pill.active {
+    background: linear-gradient(135deg, #E50914 0%, #ff1f29 100%);
+    color: #ffffff;
+    border-color: #E50914;
+    transform: translateY(-2px);
+    box-shadow:
+        0 6px 20px rgba(229, 9, 20, 0.6),
+        0 0 30px rgba(229, 9, 20, 0.4);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Pulsing glow animation for active pill */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 6px 20px rgba(229, 9, 20, 0.6),
+            0 0 30px rgba(229, 9, 20, 0.4);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 24px rgba(229, 9, 20, 0.8),
+            0 0 40px rgba(229, 9, 20, 0.6);
+    }
+}
+
+.category-pill:active {
+    transform: translateY(0);
+}
+
+/* Entrance animation for pills */
+.category-pill {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation delays */
+.category-pill:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.category-pill:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.category-pill:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.category-pill:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.category-pill:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.category-pill:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.category-pill:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.category-pill:nth-child(8) {
+    animation-delay: 0.45s;
+}
+
+.category-pill:nth-child(9) {
+    animation-delay: 0.5s;
+}
+
+.category-pill:nth-child(10) {
+    animation-delay: 0.55s;
+}
+
+.category-pill:nth-child(11) {
+    animation-delay: 0.6s;
+}
+
+.category-pill:nth-child(12) {
+    animation-delay: 0.65s;
+}
+
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
+
+@media (max-width: 1024px) {
+    .category-navbar {
+        padding: var(--spacing-lg) var(--spacing-xl);
+        gap: var(--spacing-md);
+    }
+
+    .scroll-arrow {
+        width: 44px;
+        height: 44px;
+    }
+
+    .category-pill {
+        padding: 0.75rem 1.9rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .category-navbar {
+        padding: var(--spacing-md) var(--spacing-lg);
+        gap: var(--spacing-sm);
+    }
+
+    .scroll-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .scroll-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .category-pills {
+        gap: var(--spacing-sm);
+    }
+
+    .category-pill {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* Reduce animation on mobile for performance */
+    .category-pill {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .category-pill.active {
+        animation: none;
+    }
+}

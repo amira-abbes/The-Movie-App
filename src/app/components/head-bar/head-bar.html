@@ -1,0 +1,7 @@
+<div class="head-container">
+    <h1 (click)="navigateToHome()">Movie App</h1>
+    <button (click)="navigateTo()">
+        <fa-icon [icon]="faHeart" [ngStyle]="setHeartStyle()"></fa-icon>
+        Wish List#{{movieService.wishList.length}}
+    </button>
+</div>
