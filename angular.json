@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/movie-app",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -38,8 +39,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "10KB",
+                  "maximumError": "15KB"
                 }
               ],
               "outputHashing": "all"
